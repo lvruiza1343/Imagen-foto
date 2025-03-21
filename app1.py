@@ -1,9 +1,8 @@
 import streamlit as st
-from streamlit_lottie import st_lottie
-import json
 import cv2
 import numpy as np
 import pytesseract
+from streamlit_lottie import st_lottie
 
 st.markdown(
     """
@@ -12,24 +11,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Cargar la animación Lottie desde un archivo JSON local
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
-        return json.load(f)
-
-lottie_hello = load_lottiefile("sleep.json") # Reemplaza "tu_archivo_lottie.json" con la ruta de tu archivo
-
-# Mostrar la animación Lottie
-st_lottie(
-    lottie_hello,
-    speed=1,
-    reverse=False,
-    loop=True,
-    quality="low", # medium ; high
-    height=None,
-    width=None,
-    key=None,
-)
+# Mostrar el video MP4
+lottie_hello = load_lottiefile("sleep.json")
 
 # Recuadro de la cámara
 img_file_buffer = st.camera_input("¡Tómate una foto!")
