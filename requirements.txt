@@ -4,4 +4,4 @@ numpy
 opencv-python-headless
 pytesseract
 Pillow
-pip install streamlit-lottie
+streamlit-lottie
