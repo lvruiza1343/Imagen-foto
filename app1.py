@@ -10,8 +10,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Mostrar el GIF
-st.image("cat.gif", use_container_width=True) #Asegurate que gato.gif esta en la misma carpeta que este script.
+# Mostrar el video MP4
+st.video("gatito.mp4") #Reemplaza cat.mp4 por el nombre de tu video.
 
 # Recuadro de la cámara
 img_file_buffer = st.camera_input("¡Tómate una foto!")
