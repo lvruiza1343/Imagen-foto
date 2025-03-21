@@ -9,22 +9,13 @@ import pytesseract
 st.markdown(
     """
     <style>
-    .fullScreen {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: purple;
-        z-index: -1;
+    body {
+        background-color: #800080; /* Morado */
     }
     </style>
     """,
     unsafe_allow_html=True,
 )
-
-# Div para cubrir toda la página
-st.markdown('<div class="fullScreen"></div>', unsafe_allow_html=True)
 
 st.markdown(
     """
@@ -35,30 +26,22 @@ st.markdown(
 
 # Cargar la animación Lottie desde un archivo JSON local
 def load_lottiefile(filepath: str):
-    try:
-        with open(filepath, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        st.error(f"Error: No se encontró el archivo {filepath}")
-        return None
-    except json.JSONDecodeError:
-        st.error(f"Error: El archivo {filepath} no es un JSON válido")
-        return None
+    with open(filepath, "r") as f:
+        return json.load(f)
 
-lottie_hello = load_lottiefile("tu_archivo_lottie.json") # Reemplaza "tu_archivo_lottie.json" con la ruta de tu archivo
+lottie_hello = load_lottiefile("sleep.json") # Reemplaza "tu_archivo_lottie.json" con la ruta de tu archivo
 
 # Mostrar la animación Lottie
-if lottie_hello:
-    st_lottie(
-        lottie_hello,
-        speed=1,
-        reverse=False,
-        loop=True,
-        quality="low", # medium ; high
-        height=None,
-        width=None,
-        key=None,
-    )
+st_lottie(
+    lottie_hello,
+    speed=1,
+    reverse=False,
+    loop=True,
+    quality="low", # medium ; high
+    height=None,
+    width=None,
+    key=None,
+)
 
 # Recuadro de la cámara
 img_file_buffer = st.camera_input("¡Tómate una foto!")
