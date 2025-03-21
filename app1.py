@@ -11,7 +11,7 @@ st.markdown(
 )
 
 # Mostrar el GIF
-st.image("gato.gif", use_column_width=True)
+st.image("gato.gif", use_container_width=True) #Asegurate que gato.gif esta en la misma carpeta que este script.
 
 # Recuadro de la cámara
 img_file_buffer = st.camera_input("¡Tómate una foto!")
@@ -34,6 +34,3 @@ if img_file_buffer is not None:
     text = pytesseract.image_to_string(img_rgb)
     st.write(text)
     st.image(blurred, caption="Imagen procesada", use_container_width=True)
-    
-
-
