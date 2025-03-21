@@ -10,6 +10,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Mostrar el GIF
+st.image("gato.gif", use_column_width=True)
+
+# Recuadro de la cámara
 img_file_buffer = st.camera_input("¡Tómate una foto!")
 
 with st.sidebar:
@@ -29,7 +33,7 @@ if img_file_buffer is not None:
     img_rgb = cv2.cvtColor(blurred, cv2.COLOR_GRAY2RGB)
     text = pytesseract.image_to_string(img_rgb)
     st.write(text)
-    st.image(blurred, caption = "Imagen procesada", use_container_width=True)
+    st.image(blurred, caption="Imagen procesada", use_container_width=True)
     
 
 
