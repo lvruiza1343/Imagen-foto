@@ -3,9 +3,14 @@ import cv2
 import numpy as np
 import pytesseract
 
-st.title("Reconocimiento óptico de Caracteres")
+st.markdown(
+    """
+    <h1 style='text-align: center; color: yellow;'>Reconocimiento óptico de Caracteres</h1>
+    """,
+    unsafe_allow_html=True
+)
 
-img_file_buffer = st.camera_input("Toma una Foto")
+img_file_buffer = st.camera_input("¡Tómate una foto!")
 
 with st.sidebar:
     filtro = st.radio("Aplicar Filtro", ('Con Filtro', 'Sin Filtro'))
