@@ -29,7 +29,7 @@ def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
-lottie_hello = load_lottiefile("sleep.json") # Reemplaza "tu_archivo_lottie.json" con la ruta de tu archivo
+lottie_hello = load_lottiefile("sleep.json") # Reemplaza "sleep.json" con la ruta de tu archivo
 
 # Mostrar la animación Lottie
 st_lottie(
@@ -44,7 +44,7 @@ st_lottie(
 )
 
 # Recuadro de la cámara
-img_file_buffer = st.camera_input("¡Tómate una foto!")
+img_file_buffer = st.camera_input("¡Tómate una foto y agregale un filtro!")
 
 with st.sidebar:
     filtro = st.radio("Aplicar Filtro", ('Con Filtro', 'Sin Filtro'))
@@ -54,7 +54,8 @@ if img_file_buffer is not None:
     cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
 
     if filtro == 'Con Filtro':
-        cv2_img = cv2.bitwise_not(cv2_img)
+        # Invertir solo el canal azul
+        cv2_img[:,:,0] = 255 - cv2_img[:,:,0] # 0 es el canal azul
 
     gray = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
     thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
