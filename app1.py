@@ -5,17 +5,6 @@ import cv2
 import numpy as np
 import pytesseract
 
-# Estilo CSS para el fondo morado
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #800080; /* Morado */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
 st.markdown(
     """
@@ -29,7 +18,7 @@ def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
-lottie_hello = load_lottiefile("tu_archivo_lottie.json") # Reemplaza "tu_archivo_lottie.json" con la ruta de tu archivo
+lottie_hello = load_lottiefile("sleep.json") # Reemplaza "tu_archivo_lottie.json" con la ruta de tu archivo
 
 # Mostrar la animación Lottie
 st_lottie(
